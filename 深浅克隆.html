@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复制一个对象</title>
+	<style>
+	</style>
+	
+</head>
+<body>
+	
+	<script>
+		var o={name:'tom',sex:'male',age:'18'};
+		console.log(cop(o));
+		console.log(decop(o));
+		function cop(obj){//浅克隆
+			var newobj={};
+			for(i in obj){
+				newobj[i]=obj[i];
+			}
+			return newobj;
+		}
+		function decop(obj){//深克隆
+			if(typeof obj!=='object'){//判断是否是引用类型：是，循环遍历；非：直接返回
+				return obj;
+			}
+			var newobj={};
+			for(i in obj){
+				newobj[i]=decop(obj[i]);
+			}
+			return newobj;
+		}
+	</script>
+	
+</body>
+</html>
